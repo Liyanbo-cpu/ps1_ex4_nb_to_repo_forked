@@ -1,0 +1,13 @@
+name: titanic
+channels:
+  - defaults
+dependencies:
+  - python=3.13.16
+  - seaborn
+  - matplotlib
+  - pandas=2.3
+  - numpy
+  - wordcloud
+  - scikit-learn
+  - ipykernel
+prefix: /opt/miniconda3/envs/titanic
