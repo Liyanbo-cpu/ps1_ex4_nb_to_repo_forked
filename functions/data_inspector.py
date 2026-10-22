@@ -1,33 +1,15 @@
 """Summarise Titanic data without modifying the supplied DataFrame."""
 
-from io import StringIO
+from IPython.display import display
 
 import pandas as pd
 
 
-def inspect_data(df: pd.DataFrame) -> dict:
-    """Return a five-row preview, structural information and summary statistics.
-
-    Parameters
-    ----------
-    df : pandas.DataFrame
-        Dataset to inspect. The input is not modified.
-
-    Returns
-    -------
-    dict
-        ``head`` is ``df.head()``, ``info`` is the text produced by ``df.info()``,
-        and ``describe`` is ``df.describe()`` with pandas' default column
-        selection. For a frame without columns, ``describe`` is an empty frame.
-        The caller can display the tables and print the information string.
-    """
-    info = StringIO()
-    df.info(buf=info)
-    return {
-        "head": df.head(),
-        "info": info.getvalue(),
-        "describe": df.describe() if len(df.columns) else pd.DataFrame(),
-    }
+def inspect_data(df: pd.DataFrame) -> None:
+    """Display the first five rows, structural info and summary statistics."""
+    display(df.head())
+    df.info()
+    display(df.describe())
 
 
 def calculate_missing_values(df: pd.DataFrame) -> pd.DataFrame:
